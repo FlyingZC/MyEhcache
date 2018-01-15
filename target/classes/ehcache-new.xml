@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" dynamicConfig="true"
+	maxBytesLocalDisk="50G" updateCheck="false" name="efwkCacheManage">
+
+	<diskStore path="d:\\ehtmpnew" />
+
+	<defaultCache maxEntriesLocalHeap="50" eternal="false"
+		overflowToOffHeap="false" overflowToDisk="true" timeToIdleSeconds="300"
+		timeToLiveSeconds="600" memoryStoreEvictionPolicy="FIFO"  diskPersistent="true">
+		</defaultCache>
+
+	<cache name="EFwk_demoCache" maxEntriesLocalHeap="505"
+		maxBytesLocalDisk="10M" eternal="false" overflowToOffHeap="false"
+		overflowToDisk="true" timeToIdleSeconds="350" timeToLiveSeconds="600"
+		memoryStoreEvictionPolicy="FIFO" />
+
+</ehcache>

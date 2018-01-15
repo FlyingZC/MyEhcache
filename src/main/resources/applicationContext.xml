@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- 文件监测器 -->
+	<bean id="monitor" class="com.interfaces.file.monitor.FileMonitorImpl">
+
+		<constructor-arg index="0" value="10000" />                    <!-- 监测时间间隔，单位：毫秒 -->
+		<constructor-arg index="1" ref="observer" />                <!-- 文件观察器 -->
+	</bean>
+
+	<!-- 文件观察器 -->
+	<bean id="observer" class="com.interfaces.file.monitor.FileObserverImpl">
+
+		<constructor-arg index="0" value="D:\\UploadDir" />            <!-- 观察的目录 -->
+		<constructor-arg index="1" ref="filter" />                    <!-- 文件过滤器 -->
+		<constructor-arg index="2" ref="listener" />                    <!-- 文件监听器 -->
+	</bean>
+
+	<!-- 文件监听器 -->
+	<bean id="listener" class="com.interfaces.file.monitor.FileListener" />
+
+	<!-- 文件过滤器 -->
+	<bean id="filter" class="com.interfaces.file.monitor.FileFilterImpl">
+		<!-- 指定文件扩展名，只有指定的扩展名文件会被处理。 不同的扩展名间以 "," 间隔，如：xml,txt,bak -->
+		<constructor-arg index="0" value="xml" />
+	</bean>
+</beans>

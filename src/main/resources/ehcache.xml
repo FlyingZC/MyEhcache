@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache 
+	xmlns="http://ehcache.org/ehcache.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+   <!-- 根元素ehcache相当于CacheManager.其实ehcache是cache的接口 -->
+   
+   <cache name="myCache01" >
+   
+   </cache>
+   
+   <defaultCache 
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            maxElementsOnDisk="10000000"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU">
+        <persistence strategy="localTempSwap"/>
+    </defaultCache>
+</ehcache>  
